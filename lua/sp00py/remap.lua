@@ -11,3 +11,6 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 vim.keymap.set("n", "Q", "<nop>")
+
+vim.keymap.set("n", "<C-I>", "<C-I>")
+vim.keymap.set("n", "<Tab>", "<Nop>")
