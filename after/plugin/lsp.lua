@@ -35,7 +35,6 @@ require('mason-lspconfig').setup({
   "tsserver",
   "angularls",
   "arduino_language_server",
-  "csharp_ls",
   "cssls",
   "html",
   "jsonls",
@@ -43,7 +42,8 @@ require('mason-lspconfig').setup({
   "pyright",
   "sqlls",
   "yamlls",
-  "powershell_es"
+  "powershell_es",
+  "omnisharp"
 
   },
   handlers = {
