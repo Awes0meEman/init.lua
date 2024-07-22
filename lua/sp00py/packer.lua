@@ -7,7 +7,6 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   -- f
   use 'wbthomason/packer.nvim'
-  
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.6',
 	  -- or                            , branch = '0.1.x',
@@ -46,4 +45,15 @@ return require('packer').startup(function(use)
   use('jmederosalvarado/roslyn.nvim')
   use('rafamadriz/friendly-snippets')
   use('tpope/vim-sleuth')
+  use({
+    'MeanderingProgrammer/markdown.nvim',
+    as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+    after = { 'nvim-treesitter' },
+    requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+    -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+    config = function()
+        require('render-markdown').setup({})
+    end,
+})
 end)
