@@ -1,5 +1,3 @@
-vim.opt.guicursor = ""
-
 vim.opt.relativenumber = true
 
 vim.opt.tabstop = 4
