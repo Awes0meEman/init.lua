@@ -52,6 +52,7 @@ autocmd('LspAttach', {
     end
 })
 
+
 -- setup for Godot LSP
 --
 if package.config:sub(1,1) == '\\' then
