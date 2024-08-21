@@ -32,3 +32,5 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 
 vim.keymap.set("n", "<leader>t", vim.cmd.Neotree)
+vim.keymap.set("n", "<leader>tsv", "<cmd>vsp<CR><cmd>term<CR>")
+vim.keymap.set("n", "<leader>tsh", "<cmd>sp<CR><cmd>term<CR>")
