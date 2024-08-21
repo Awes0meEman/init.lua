@@ -55,7 +55,7 @@ autocmd('LspAttach', {
 
 -- setup for Godot LSP
 --
-if package.config:sub(1,1) == '\\' then
+if package.config:sub(1, 1) == '\\' then
     --windows
     if os.getenv('ncat') ~= nil then
         local port = os.getenv('GDScript_Port') or '6005'
@@ -71,7 +71,7 @@ if package.config:sub(1,1) == '\\' then
                 vim.api.nvim_command([[echo serverstart(']] .. pipe .. [[')]])
             end
         })
-end
+    end
 else
     local port = os.getenv('GDScript_Port') or '6005'
 
