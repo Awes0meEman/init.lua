@@ -4,10 +4,8 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
@@ -34,3 +32,5 @@ end)
 vim.keymap.set("n", "<leader>t", vim.cmd.Neotree)
 vim.keymap.set("n", "<leader>tsv", "<cmd>vsp<CR><cmd>term<CR>")
 vim.keymap.set("n", "<leader>tsh", "<cmd>sp<CR><cmd>term<CR>")
+
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
