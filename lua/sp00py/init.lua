@@ -56,6 +56,7 @@ autocmd('LspAttach', {
 -- setup for Godot LSP
 --
 if package.config:sub(1, 1) == '\\' then
+    vim.opt.shell = 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe'
     --windows
     if os.getenv('ncat') ~= nil then
         local port = os.getenv('GDScript_Port') or '6005'
