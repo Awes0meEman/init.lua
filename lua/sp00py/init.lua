@@ -8,6 +8,17 @@ local augroup = vim.api.nvim_create_augroup
 local MainGroup = augroup('MainGroup', {})
 local YankGroup = augroup('HighlightYank', {})
 
+local HighlightGroup = augroup("LSPDocumentHighlight", {})
+vim.opt.updatetime = 1000
+autocmd('CursorMoved',{
+    buffer = bufnr,
+    group = HighlightGroup,
+    callback = function ()
+        vim.lsp.buf.clear_references()
+        vim.lsp.buf.document_highlight()
+    end
+})
+
 function R(name)
     require("plenary.reload").reload_module(name)
 end
