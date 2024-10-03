@@ -62,6 +62,13 @@ return {
                         }
                     }
                 end,
+                ['omnisharp'] = function ()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.omnisharp.setup {
+                        capabilities = capabilities,
+                        use_mono = false
+                    }
+                end
             }
         })
 
