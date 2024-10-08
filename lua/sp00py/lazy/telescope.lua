@@ -6,8 +6,16 @@ return {
     },
 
     config = function()
+        local actions = require("telescope.actions")
         require('telescope').setup({
-            path_display = "smart"
+            defaults = {
+                mappings = {
+                    i = {
+                        ["<esc>"] = actions.close
+                    },
+                },
+                path_display = { "truncate" },
+            },
         })
 
         local builtin = require('telescope.builtin')
