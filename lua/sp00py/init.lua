@@ -38,14 +38,6 @@ autocmd('LspAttach', {
         })
     end
 })
---autocmd('CursorMoved', {
---    buffer = bufnr,
---    group = HighlightGroup,
---    callback = function()
---        vim.lsp.buf.clear_references()
---        vim.lsp.buf.document_highlight()
---    end
---})
 
 function R(name)
     require("plenary.reload").reload_module(name)
