@@ -66,9 +66,26 @@ return {
                     local lspconfig = require("lspconfig")
                     lspconfig.omnisharp.setup {
                         capabilities = capabilities,
-                        use_mono = false
+                        use_mono = false,
                     }
-                end
+                end,
+                ['powershell_es'] = function ()
+                    --this only works on Windows (I think?) with the repo installed on the desktop
+                    --https://github.com/PowerShell/PowerShellEditorServices/releases
+                    --need to figure out how to manage this dependency, installing it into this
+                    --config seems bad
+                    --also this LSP requires PowerShell 7.2 or higher, which ironically shouldn't be a problem
+                    --on linux
+                    local home_directory = os.getenv('HOME')
+                    if home_directory == nil then
+                        home_directory = os.getenv('USERPROFILE')
+                    end
+                    local bundle_path = home_directory .. '/Desktop/PowerShellEditorServices'
+                    local lspconfig = require("lspconfig")
+                    lspconfig.powershell_es.setup {
+                        bundle_path = bundle_path,
+                    }
+                end,
             }
         })
 
