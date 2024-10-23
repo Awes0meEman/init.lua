@@ -14,10 +14,10 @@ return {
     },
 
     config = function()
-        local spell_words = {}
-        for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8.add", "r"):lines() do
-            table.insert(spell_words, word)
-        end
+        --local spell_words = {}
+        --for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8.add", "r"):lines() do
+        --    table.insert(spell_words, word)
+        --end
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -45,7 +45,7 @@ return {
                 "yamlls",
                 "powershell_es",
                 "omnisharp",
-                "ltex-ls"
+                "ltex"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -74,17 +74,17 @@ return {
                         use_mono = false,
                     }
                 end,
-['ltex'] = function()
-local lspconfig = require("lspconfig")
-    lspconfig.ltex.setup({
-            language = "en-US",
-            enabled = true,
-            dictionary = {
-            ["en-US"] = spell_words,
-            }
-            })
-                end
-                ['powershell_es'] = function ()
+                ['ltex'] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.ltex.setup({
+                        language = "en-US",
+                        enabled = true,
+                        dictionary = {
+                            ["en-US"] = spell_words,
+                        }
+                    })
+                end,
+                ['powershell_es'] = function()
                     --this only works on Windows (I think?) with the repo installed on the desktop
                     --https://github.com/PowerShell/PowerShellEditorServices/releases
                     --need to figure out how to manage this dependency, installing it into this
