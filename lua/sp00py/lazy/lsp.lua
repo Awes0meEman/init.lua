@@ -14,6 +14,10 @@ return {
     },
 
     config = function()
+        local spell_words = {}
+        for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8.add", "r"):lines() do
+            table.insert(spell_words, word)
+        end
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -40,7 +44,8 @@ return {
                 "sqlls",
                 "yamlls",
                 "powershell_es",
-                "omnisharp"
+                "omnisharp",
+                "ltex-ls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -62,12 +67,22 @@ return {
                         }
                     }
                 end,
-                ['omnisharp'] = function ()
+                ['omnisharp'] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.omnisharp.setup {
                         capabilities = capabilities,
                         use_mono = false
                     }
+                end,
+                ['ltex'] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.ltex.setup({
+                        language = "en-US",
+                        enabled = true,
+                        dictionary = {
+                            ["en-US"] = spell_words,
+                        }
+                    })
                 end
             }
         })

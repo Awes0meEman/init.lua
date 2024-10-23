@@ -1,4 +1,4 @@
-require("sp00py.set")
+require("sp00py.opts")
 require("sp00py.remap")
 require("sp00py.lazy_init")
 
