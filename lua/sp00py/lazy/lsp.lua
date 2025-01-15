@@ -33,7 +33,6 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "eslint",
-                "ts_ls",
                 "angularls",
                 "arduino_language_server",
                 "cssls",
