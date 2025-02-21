@@ -121,27 +121,29 @@ autocmd('LspAttach', {
     end
 })
 
+autocmd("FileType", {
+    pattern = { "gd", "gdscript", "gdscript3" },
+    group = vim.api.nvim_create_augroup("gdscript-lsp-start", {}),
+    callback = function()
+        if vim.fn.executable('ncat') == 1 then
+           local pipe = [[\\.\pipe\godot.pipe]]
+            vim.lsp.start {
+                name = "gdscript",
+                cmd = { "ncat", "127.0.0.1", "6005" },
+                root_dir = vim.fs.dirname(vim.fs.find({ "project.godot", ".git" }, { upward = true })[1]),
+                on_attach = function (client, bufnr)
+                    vim.api.nvim_command([[echo serverstart(']] .. pipe .. [[')]])
+                end
+            }
+        end
+    end,
+})
 
 -- setup for Godot LSP
 --
 if package.config:sub(1, 1) == '\\' then
-    vim.opt.shell = 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe'
     --windows
-    if os.getenv('ncat') ~= nil then
-        local port = os.getenv('GDScript_Port') or '6005'
-
-        local cmd = { 'ncat', '127.0.0.1', port }
-        local pipe = [[\\.\pipe\godot.pipe]]
-
-        vim.lsp.start({
-            name = 'Godot',
-            cmd = cmd,
-            root_dir = vim.fs.dirname(vim.fs.find({ 'project.godot', '.git' }, { upward = true })[1]),
-            on_attach = function(client, bufnr)
-                vim.api.nvim_command([[echo serverstart(']] .. pipe .. [[')]])
-            end
-        })
-    end
+    vim.opt.shell = 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe'
 else
     local port = os.getenv('GDScript_Port') or '6005'
 
