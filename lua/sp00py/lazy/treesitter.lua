@@ -5,7 +5,7 @@ local M = {
     end,
     branch = "master",
     config = function()
-        local configs = require("nvim-treesitter.config")
+        local configs = require("nvim-treesitter.configs")
 
       configs.setup({
           ensure_installed = { "lua", "vim", "vimdoc", "javascript", "html", "rust", "c_sharp", "python", "markdown", "markdown_inline", "htmldjango", "gitignore", "json", "go" },
