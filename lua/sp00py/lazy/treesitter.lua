@@ -3,8 +3,9 @@ local M = {
     build = function()
         require("nvim-treesitter.install").update({ with_sync = true })()
     end,
+    branch = "master",
     config = function()
-        local configs = require("nvim-treesitter.configs")
+        local configs = require("nvim-treesitter.config")
 
       configs.setup({
           ensure_installed = { "lua", "vim", "vimdoc", "javascript", "html", "rust", "c_sharp", "python", "markdown", "markdown_inline", "htmldjango", "gitignore", "json", "go" },
@@ -12,17 +13,17 @@ local M = {
           highlight = { enable = true },
           indent = { enable = true },
         })
-        local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-        treesitter_parser_config.powershell = {
-            install_info = {
-                url = "~/tsparsers/tree-sitter-powershell",
-                files = {"src/parser.c", "src/scanner.c"},
-                branch = "main",
-                generate_requires_npm = false,
-                requires_generate_from_grammar = false
-            },
-            filetype = "ps1",
-        }
+        --local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_config()
+        --treesitter_parser_config.powershell = {
+        --    install_info = {
+        --        url = "~/tsparsers/tree-sitter-powershell",
+        --        files = {"src/parser.c", "src/scanner.c"},
+        --        branch = "main",
+        --        generate_requires_npm = false,
+        --        requires_generate_from_grammar = false
+        --    },
+        --    filetype = "ps1",
+        --}
     end
 }
 
